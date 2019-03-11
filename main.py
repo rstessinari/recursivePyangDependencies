@@ -1,12 +1,14 @@
 """
-    ** Code to TXT **
+    **  Recursive Pyang Dependencies **
     Created by: Rodrigo S. Tessinari
                 {rodrigostange@gmail.com}
-                24/10/2018
+                11/03/2019
 """
 
 import sys
 from os import walk
+from os import path
+import subprocess
 
 def run(root_folder):
     num_dir = 0
@@ -34,6 +36,7 @@ def run(root_folder):
                         fail_flag = True
 
             resultFile.write('\n')
+            resultFile.write('\n')
     if fail_flag:
         print('Failed to open the following files:')
         try:
@@ -47,8 +50,11 @@ def run(root_folder):
 if __name__ == "__main__":
     root_folder = ''
     if (len(sys.argv) != 2):
-        root_folder = 'C:\\Users\\rodri\\Desktop\\elastico\\src'
+        root_folder = path.join('home','yang','models','allModels')
+        print(root_folder)
         print("You did not choose a folder.")
+        print(subprocess.check_output("ls %s".format(root_folder)))
+        sys.exit()
     else:
         root_folder = sys.argv[1]
     print("Using \"%s\" as root folder." % (root_folder))
