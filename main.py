@@ -59,4 +59,7 @@ if __name__ == "__main__":
     print('Dependency list:')
     for key in result_dict.keys():
         print('  {}: {}'.format(key,result_dict[key]))
-    print('Files needed:',explored_lst)
+    
+    print('Files needed:')
+    for file in sorted(explored_lst):
+        print('  ',file)
